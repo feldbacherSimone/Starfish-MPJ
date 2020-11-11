@@ -23,19 +23,7 @@ public class Chunk
 
     //int _configIndex = -1;
 
-  /*  private void Update()
-    {
-        if (Input.GetKey(KeyCode.Space))
-        {
-            
-            terrainMap = new float[width + 1, hight + 1, width + 1];
 
-            Destroy(mesh);
-
-            PopulateTerrainMap();
-            CreateMeshdata();
-        }
-    }*/
 
     public Chunk (Vector3Int _position, int _height )
     {
