@@ -387,7 +387,7 @@ GameObject:
   - component: {fileID: 1778810542}
   - component: {fileID: 1778810541}
   m_Layer: 0
-  m_Name: GameObject
+  m_Name: NoisePreview
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -422,7 +422,7 @@ MonoBehaviour:
   mapHeight: 185
   noiseScale: 13.2
   octaves: 4
-  persistence: 0.658
+  persistence: 0.684
   lacunarity: 1.94
   seed: 174
   offset: {x: -1.47, y: 0}

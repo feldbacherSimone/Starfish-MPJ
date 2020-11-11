@@ -63,8 +63,27 @@ public static class Noise
                 noiseMap[x, y] = Mathf.InverseLerp(minNoiseHeight, maxNoiseHeight, noiseMap[x, y]);
             }
         }
+         return noiseMap;
 
-                return noiseMap;
+        
         //I will actuall kms if this doesn't work 
     }
-}
+    public static float[,,] ConvertToVector3(float[,] noiseMap, int worldHeight)
+    {
+        float[,,] noiseMap3d = new float[noiseMap.Length, worldHeight, noiseMap.Length];
+        for (int y = 0; y < worldHeight; y++)
+        {
+            for (int x = 0; x < noiseMap.Length; x++)
+            {
+                for (int z = 0; x < noiseMap.Length; x++)
+                {
+                    float currentHeight = noiseMap[x, z] + y;
+                    
+                    noiseMap3d[x, y, z] = currentHeight / worldHeight + (currentHeight/worldHeight)*y;
+                }
+            }
+        }
+        return noiseMap3d;
+    }   
+    }
+
