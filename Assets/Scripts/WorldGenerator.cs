@@ -4,10 +4,11 @@ using UnityEngine;
 
 public class WorldGenerator : MonoBehaviour
 {
-    public int WorldsizeInChunks= 10;
-    public int WorldHight = 3;
     public int chunkSize = 16;
     Dictionary<Vector3Int, Chunk> chunks = new Dictionary<Vector3Int, Chunk>();
+
+    int WorldsizeInChunks { get { return GameData.WorldsizeInChunks; } }
+    int WorldHight { get { return GameData.ChunkHeight; } }
 
     private void Start()
     {
@@ -37,7 +38,7 @@ public class WorldGenerator : MonoBehaviour
                 for (int z = 0; z < WorldsizeInChunks; z++)
                 {
                        Vector3Int chunkPos = new Vector3Int(x * GameData.ChunkWidth, y * GameData.ChunkHeight, z * GameData.ChunkWidth);
-                       chunks.Add(chunkPos, new Chunk(chunkPos, WorldHight, WorldsizeInChunks * chunkSize));
+                       chunks.Add(chunkPos, new Chunk(chunkPos, WorldHight * chunkSize, WorldsizeInChunks * chunkSize));
                        chunks[chunkPos].chunkObject.transform.SetParent(transform);
                 }
             }

@@ -21,19 +21,12 @@ public class Chunk
     Vector3Int chunkPosition;
 
     float[,,] terrainMap;
-
+    float[,,] noise3d;
     //int _configIndex = -1;
 
 
     
-    public float noiseScale;
-    public int octaves;
-    [Range(0, 1)]
-    public float persistence;
-    public float lacunarity;
-
-    public int seed;
-    public Vector2 offset;
+  
 
 
     public Chunk (Vector3Int _position, int _height, int worldSize )
@@ -52,10 +45,11 @@ public class Chunk
 
         terrainMap = new float[width +1, height+1, width+1];
 
-        float[,,] noise3d = Noise3d(worldSize, _height);
-        PopulateTerrainMap(_position, _height, worldSize, noise3d);
+        float[,,] noise3d = Noise3d(_height);
+        PopulateTerrainMap(_position, worldSize, noise3d);
         CreateMeshdata();
         meshCollider.sharedMesh = mesh;
+        
 
     }
 
@@ -63,15 +57,7 @@ public class Chunk
     int height { get { return GameData.ChunkHeight; } }
     float terrainSurface { get { return GameData.terrainSurface; } }
 
-    float[,,] Noise3d(int worldSize, int worldHeight)
-    {
-        
-
-        float[,] noise2d = Noise.GenerateNoiseMap(worldSize, worldSize, seed, noiseScale, octaves, persistence, lacunarity, offset);
-        float[,,] noise3d = Noise.ConvertToVector3(noise2d, height);
-        return noise3d;
-
-    }
+    
 
     float SampleTerrain (Vector3Int point)
     {
@@ -96,19 +82,15 @@ public class Chunk
         BuildMesh();
     }
 
-    void PopulateTerrainMap(Vector3Int pos, int worldheight, int worldSize, float[,,] noise3d)
+    void PopulateTerrainMap(Vector3Int pos, int worldheight, float[,,] noise3d)
     {
-        for (int x = 0; x < width + 1; x++)
-        {
-            for (int y = 0; y < height + 1; y++)
-            {
-                for (int z = 0; z < width + 1; z++)
+        for (int x = 0; x < width ; x++)
+        {       
+            for (int z = 0; z < width ; z++)
+                {
+                for (int y = 0; y < height ; y++)
                 {
                     float thisHeight;
-
-                    //thisHeight = GameData.GetDensity(x + chunkPosition.x, y + chunkPosition.y, z + chunkPosition.z);                        
-                    //terrainMap[x, y, z] = thisHeight ;                    
-                    //get 3d noise map
                     thisHeight = noise3d[x, y, z];
                     terrainMap[x, y, z] = thisHeight;
                      

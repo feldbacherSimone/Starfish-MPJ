@@ -68,18 +68,23 @@ public static class Noise
         
         //I will actuall kms if this doesn't work 
     }
-    public static float[,,] ConvertToVector3(float[,] noiseMap, int worldHeight)
+    public static float[,,] ConvertToVector3(float[,] noiseMap, int worldSize, int worldHeight)
     {
-        float[,,] noiseMap3d = new float[noiseMap.Length, worldHeight, noiseMap.Length];
-        for (int y = 0; y < worldHeight; y++)
+        
+        float[,,] noiseMap3d = new float[worldSize, worldHeight, worldSize];
+
+        for (int x = 0; x < worldSize; x++)
         {
-            for (int x = 0; x < noiseMap.Length; x++)
+            //Debug.Log("x" + x);
+            for (int z = 0; z < worldSize; z++)
             {
-                for (int z = 0; x < noiseMap.Length; x++)
-                {
-                    float currentHeight = noiseMap[x, z] + y;
+                //Debug.Log("z" + z);
+                float currentHeight = noiseMap[x, z];
+                
+                for (int y = 0; y < worldHeight; y++)
+                  {
+                        noiseMap3d[x, y, z] = currentHeight / worldHeight + (currentHeight/worldHeight)*y;
                     
-                    noiseMap3d[x, y, z] = currentHeight / worldHeight + (currentHeight/worldHeight)*y;
                 }
             }
         }

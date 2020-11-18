@@ -4,7 +4,9 @@ using UnityEngine;
 
 public  class GameData : MonoBehaviour
 {
-       
+    public static int WorldsizeInChunks = 3;
+    public int WorldHeight = 1;
+
     public static float terrainSurface = 0.4f; // also acts as density threshhold
     public static int ChunkWidth = 16;
     public static int ChunkHeight = 16;
@@ -12,12 +14,22 @@ public  class GameData : MonoBehaviour
     public static float noiseX = 16f;
     public static float noiseY = 3f;
     public static float noiseScale = 0.05f;
+
     
+    public static int octaves;
+    [Range(0, 1)]
+    public static float persistence;
+    public static float lacunarity;
+
+    public int seed;
+    public Vector2 offset;
+
 
     public static float gameBaseHight = 60f;
     public static float terrainHightRange = 10f;
+    float[,,] noise3d;
 
-    
+
 
     public static float GetTerrainHeight (int x, int z)
     {
@@ -28,6 +40,19 @@ public  class GameData : MonoBehaviour
     public static float GetDensity(int x, int y, int z)
     {
         return PerlinNoise3D(x  * noiseScale, y  * noiseScale, z  * noiseScale) ;
+    }
+
+    float Noise3d(int worldHeight, Vector3Int postition )
+    {
+        
+        float terrainHeight = noise3d[postition.x, postition.y, postition.z];
+        return terrainHeight;
+
+    }
+    void CreateTerrainNoise()
+    {
+        float[,] noise2d = Noise.GenerateNoiseMap(WorldsizeInChunks * ChunkWidth, WorldsizeInChunks * ChunkWidth, seed, noiseScale, octaves, persistence, lacunarity, offset);
+        float[,,] noise3d = Noise.ConvertToVector3(noise2d, WorldsizeInChunks*ChunkWidth, WorldHeight*ChunkHeight);
     }
 
     //in collaboration with unity answers ;)
