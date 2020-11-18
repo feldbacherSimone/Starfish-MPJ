@@ -31,6 +31,8 @@ public class Chunk
 
     public Chunk (Vector3Int _position, int _height, int worldSize )
     {
+
+
         chunkObject = new GameObject();
         chunkObject.name = string.Format("Chunk {0}, {1}", _position.x, _position.z);
 
@@ -42,10 +44,12 @@ public class Chunk
         meshRenderer.material = Resources.Load<Material>("Materials/TerrainMAT");
         meshCollider = chunkObject.AddComponent<MeshCollider>();
         
-
+        //Create float array to store hight onformation in 
         terrainMap = new float[width +1, height+1, width+1];
 
-        float[,,] noise3d = Noise3d(_height);
+        GameData.instance.CreateTerrainNoise(new Vector2(chunkPosition.x , chunkPosition.z ));
+
+        //float[,,] noise3d = Noise3d(_height);
         PopulateTerrainMap(_position, worldSize, noise3d);
         CreateMeshdata();
         meshCollider.sharedMesh = mesh;
@@ -53,9 +57,9 @@ public class Chunk
 
     }
 
-    int width { get { return GameData.ChunkWidth; } }
-    int height { get { return GameData.ChunkHeight; } }
-    float terrainSurface { get { return GameData.terrainSurface; } }
+    int width { get { return GameData.instance.ChunkWidth; } }
+    int height { get { return GameData.instance.ChunkHeight; } }
+    float terrainSurface { get { return GameData.instance.terrainSurface; } }
 
     
 
@@ -84,16 +88,19 @@ public class Chunk
 
     void PopulateTerrainMap(Vector3Int pos, int worldheight, float[,,] noise3d)
     {
-        for (int x = 0; x < width ; x++)
+        // The data points for terrain are stored at the corners of our "cubes", so the terrainMap needs to be 1 larger
+        // than the width/height of our mesh.
+        for (int x = 0; x < width +1  ; x++)
         {       
-            for (int z = 0; z < width ; z++)
+            for (int z = 0; z < width +1 ; z++)
                 {
-                for (int y = 0; y < height ; y++)
+                for (int y = 0; y < height +1 ; y++)
                 {
-                    float thisHeight;
-                    thisHeight = noise3d[x, y, z];
-                    terrainMap[x, y, z] = thisHeight;
-                     
+                    //get height value from our layerd noise function 
+                    float thisHeight = GameData.instance.getHeight(x , z );
+                    
+                    terrainMap[x, y, z] = (float)y - thisHeight;
+                    
                 }
             }
         }

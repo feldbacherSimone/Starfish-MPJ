@@ -4,12 +4,13 @@ using UnityEngine;
 
 public static class Noise
 {
-    public static float[,] GenerateNoiseMap(int mapWidth, int mapHeight,int seed, float scale, int octaves, float persistance, float lacunarity, Vector2 offset) {
+    public static float[,] GenerateNoiseMap(int mapWidth, int mapHeight, int seed, float scale, int octaves, float persistance, float lacunarity, Vector2 offset)
+    {
         float[,] noiseMap = new float[mapWidth, mapHeight];
 
         System.Random prng = new System.Random(seed);
-        Vector2[] octaveOffset = new Vector2[octaves]; 
-        for(int i = 0; i < octaves; i++)
+        Vector2[] octaveOffset = new Vector2[octaves];
+        for (int i = 0; i < octaves; i++)
         {
             float offsetX = prng.Next(-100000, 100000) + offset.x;
             float offsetY = prng.Next(-100000, 100000) + offset.y;
@@ -33,27 +34,29 @@ public static class Noise
                 float frequency = 1;
                 float noiseHeight = 0;
 
-                    for(int i = 0; i < octaves; i++) { 
-                        float sampleX = (x-halfWidth)/scale * frequency + octaveOffset[i].x;
-                        float sampleY = (y-halfHeight)/scale * frequency + octaveOffset[i].y;
+                for (int i = 0; i < octaves; i++)
+                {
+                    float sampleX = (x - halfWidth) / scale * frequency + octaveOffset[i].x;
+                    float sampleY = (y - halfHeight) / scale * frequency + octaveOffset[i].y;
 
-                        float perlinValue = Mathf.PerlinNoise(sampleX, sampleY) * 2 -1;
-                        noiseHeight += perlinValue * amplitude;
+                    float perlinValue = Mathf.PerlinNoise(sampleX, sampleY) * 2 - 1;
+                    noiseHeight += perlinValue * amplitude;
 
-                        amplitude *= persistance;
-                        frequency *= lacunarity; 
+                    amplitude *= persistance;
+                    frequency *= lacunarity;
 
-                    }
+                }
 
                 if (noiseHeight > maxNoiseHeight)
                 {
                     maxNoiseHeight = noiseHeight;
                 }
-                else if(noiseHeight < minNoiseHeight) {
+                else if (noiseHeight < minNoiseHeight)
+                {
                     minNoiseHeight = noiseHeight;
                 }
                 noiseMap[x, y] = noiseHeight;
-            }    
+            }
         }
         for (int y = 0; y < mapHeight; y++)
         {
@@ -63,12 +66,16 @@ public static class Noise
                 noiseMap[x, y] = Mathf.InverseLerp(minNoiseHeight, maxNoiseHeight, noiseMap[x, y]);
             }
         }
-         return noiseMap;
+        return noiseMap;
 
-        
+
         //I will actuall kms if this doesn't work 
     }
-    public static float[,,] ConvertToVector3(float[,] noiseMap, int worldSize, int worldHeight)
+}
+
+    // This is stupid. I spent two hours on this . too bad!
+
+    /* public static float[,,] ConvertToVector3(float[,] noiseMap, int worldSize, int worldHeight)
     {
         
         float[,,] noiseMap3d = new float[worldSize, worldHeight, worldSize];
@@ -90,5 +97,5 @@ public static class Noise
         }
         return noiseMap3d;
     }   
-    }
+    } */ 
 

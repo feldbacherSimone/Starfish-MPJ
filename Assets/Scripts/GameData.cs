@@ -2,57 +2,67 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public  class GameData : MonoBehaviour
+public class GameData : MonoBehaviour
 {
-    public static int WorldsizeInChunks = 3;
+    [Header("World Settings")]
+
+    public  int WorldsizeInChunks = 2;
     public int WorldHeight = 1;
+    [Range(0,1)]
+    public  float terrainSurface = 0.4f; // also acts as density threshhold
+    public  float gameBaseHight = 60f;
+    public  float terrainHeightRange = 10f;
 
-    public static float terrainSurface = 0.4f; // also acts as density threshhold
-    public static int ChunkWidth = 16;
-    public static int ChunkHeight = 16;
+    [Header ("Chunk Settings")]
+    public  int ChunkWidth = 16;
+    public  int ChunkHeight = 2;
 
-    public static float noiseX = 16f;
-    public static float noiseY = 3f;
-    public static float noiseScale = 0.05f;
+    [Header("Noise Settings")]
+    public  float noiseX = 16f;
+    public  float noiseY = 3f;
+    public  float noiseScale = 0.05f;
 
-    
-    public static int octaves;
+    public  int octaves;
     [Range(0, 1)]
-    public static float persistence;
-    public static float lacunarity;
+    public  float persistence;
+    public  float lacunarity;
 
-    public int seed;
-    public Vector2 offset;
+    public  int seed;
+    //public Vector2 offset;
 
+    public float[,] noise2d;
 
-    public static float gameBaseHight = 60f;
-    public static float terrainHightRange = 10f;
-    float[,,] noise3d;
+    public static GameData instance;
 
-
-
-    public static float GetTerrainHeight (int x, int z)
+    private void Awake()
     {
-        return (float)terrainHightRange * Mathf.PerlinNoise((float)x / noiseX * noiseY + 0.001f, (float)z / noiseX * noiseY + 0.001f) + gameBaseHight;
+        instance = this;
 
     }
 
-    public static float GetDensity(int x, int y, int z)
+
+    //Old function for hight values
+    public float GetTerrainHeight (int x, int z)
+    {
+        return (float)terrainHeightRange * Mathf.PerlinNoise((float)x / noiseX * noiseY + 0.001f, (float)z / noiseX * noiseY + 0.001f) + gameBaseHight;
+
+    }
+
+    //1st apprach with 3d perlin noise
+    public  float GetDensity(int x, int y, int z)
     {
         return PerlinNoise3D(x  * noiseScale, y  * noiseScale, z  * noiseScale) ;
     }
 
-    float Noise3d(int worldHeight, Vector3Int postition )
-    {
-        
-        float terrainHeight = noise3d[postition.x, postition.y, postition.z];
-        return terrainHeight;
 
+    public  void CreateTerrainNoise(Vector2 offset){
+       
+        noise2d = Noise.GenerateNoiseMap(ChunkWidth +1, ChunkWidth +1, seed, noiseScale, octaves, persistence, lacunarity, offset);
+        print(offset);
     }
-    void CreateTerrainNoise()
+    public float getHeight(int x, int z)
     {
-        float[,] noise2d = Noise.GenerateNoiseMap(WorldsizeInChunks * ChunkWidth, WorldsizeInChunks * ChunkWidth, seed, noiseScale, octaves, persistence, lacunarity, offset);
-        float[,,] noise3d = Noise.ConvertToVector3(noise2d, WorldsizeInChunks*ChunkWidth, WorldHeight*ChunkHeight);
+        return noise2d[x, z];
     }
 
     //in collaboration with unity answers ;)
