@@ -100,6 +100,7 @@ public class Chunk
                     float thisHeight = GameData.instance.getHeight(x , z );
                     
                     terrainMap[x, y, z] = (float)y - thisHeight;
+                 
                     
                 }
             }

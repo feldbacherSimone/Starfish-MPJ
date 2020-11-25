@@ -438,7 +438,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 391197cba301f6c4ab37445d95cb8e8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WorldsizeInChunks: 1
+  WorldsizeInChunks: 4
   WorldHeight: 1
   terrainSurface: 0.4
   gameBaseHight: 60
@@ -451,8 +451,8 @@ MonoBehaviour:
   octaves: 3
   persistence: 0.156
   lacunarity: 0.39
+  severity: 1
   seed: 11
-  offset: {x: 0, y: 0}
 --- !u!4 &933720465
 Transform:
   m_ObjectHideFlags: 0

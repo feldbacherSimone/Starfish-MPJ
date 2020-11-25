@@ -26,6 +26,8 @@ public class GameData : MonoBehaviour
     [Range(0, 1)]
     public  float persistence;
     public  float lacunarity;
+    [Range(1, 16)]
+    public float severity;
 
     public  int seed;
     //public Vector2 offset;
@@ -45,7 +47,6 @@ public class GameData : MonoBehaviour
     public float GetTerrainHeight (int x, int z)
     {
         return (float)terrainHeightRange * Mathf.PerlinNoise((float)x / noiseX * noiseY + 0.001f, (float)z / noiseX * noiseY + 0.001f) + gameBaseHight;
-
     }
 
     //1st apprach with 3d perlin noise
@@ -56,13 +57,12 @@ public class GameData : MonoBehaviour
 
 
     public  void CreateTerrainNoise(Vector2 offset){
-       
         noise2d = Noise.GenerateNoiseMap(ChunkWidth +1, ChunkWidth +1, seed, noiseScale, octaves, persistence, lacunarity, offset);
         print(offset);
     }
     public float getHeight(int x, int z)
     {
-        return noise2d[x, z];
+        return noise2d[x, z] * severity;
     }
 
     //in collaboration with unity answers ;)
