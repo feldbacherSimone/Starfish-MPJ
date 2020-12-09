@@ -45,11 +45,12 @@ public class WorldGenerator : MonoBehaviour
 
                     GameObject newPlane = GameObject.Instantiate(plane);
                     newPlane.transform.SetParent(transform);
-                    newPlane.transform.position = chunkPos + new Vector3(0, -5, 0);
+                    newPlane.transform.GetChild(0).gameObject.transform.Rotate(new Vector3(0, 180, 0));
+                  newPlane.transform.position = chunkPos + new Vector3(0, -5, 0);
                     MapDisplay mapDisplay = newPlane.GetComponent<MapDisplay>();
                     mapDisplay.textureRenderer = newPlane.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>();
                     mapDisplay.textureRenderer.material = new Material(matRef);
-                    mapDisplay.DrawNoiseMap(GameData.instance.CreateTerrainNoise(new Vector2(chunkPos.x , chunkPos.z)));
+                    mapDisplay.DrawNoiseMap(GameData.instance.CreateTerrainNoise(new Vector2(chunkPos.x / GameData.instance.noiseScale, chunkPos.z / GameData.instance.noiseScale)));
                     print(chunkPos + "chunk position");
 
                     

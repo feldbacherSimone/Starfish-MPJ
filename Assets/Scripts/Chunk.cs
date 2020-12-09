@@ -47,7 +47,7 @@ public class Chunk
         //Create float array to store hight onformation in 
         terrainMap = new float[width +1, height+1, width+1];
 
-        GameData.instance.CreateTerrainNoise(new Vector2(chunkPosition.x  , chunkPosition.z* GameData.instance.offsetScale));
+        GameData.instance.CreateTerrainNoise(new Vector2(chunkPosition.x / GameData.instance.noiseScale, chunkPosition.z / GameData.instance.noiseScale));
 
         Debug.Log(chunkPosition.x * GameData.instance.offsetScale);
         //float[,,] noise3d = Noise3d(_height);
