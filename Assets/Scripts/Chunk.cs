@@ -5,7 +5,7 @@ using UnityEngine;
 public class Chunk 
 {
 
-    public bool smoothTerrain = true;
+    
 
     List<Vector3> vertices = new List<Vector3>();
     List<int> triangles = new List<int>();
@@ -47,8 +47,9 @@ public class Chunk
         //Create float array to store hight onformation in 
         terrainMap = new float[width +1, height+1, width+1];
 
-        GameData.instance.CreateTerrainNoise(new Vector2(chunkPosition.x , chunkPosition.z ));
+        GameData.instance.CreateTerrainNoise(new Vector2(chunkPosition.x  , chunkPosition.z* GameData.instance.offsetScale));
 
+        Debug.Log(chunkPosition.x * GameData.instance.offsetScale);
         //float[,,] noise3d = Noise3d(_height);
         PopulateTerrainMap(_position, worldSize, noise3d);
         CreateMeshdata();
@@ -151,7 +152,7 @@ public class Chunk
 
                 Vector3 vertPosition;
 
-                if (smoothTerrain)
+                if (GameData.instance.smoothTerrain)
                 {
                     float vert1Sample = cube[GameData.EdgeIndexes[indice, 0]];
                     float vert2Sample = cube[GameData.EdgeIndexes[indice, 1]];

@@ -27,8 +27,12 @@ public class GameData : MonoBehaviour
     public  float persistence;
     public  float lacunarity;
     [Range(1, 16)]
-    public float severity;
+    public float severity  = 1;
+    public bool smoothTerrain = true;
 
+    public float offsetScale;
+
+    public float offsetAdd;
     public  int seed;
     //public Vector2 offset;
 
@@ -47,6 +51,7 @@ public class GameData : MonoBehaviour
     public float GetTerrainHeight (int x, int z)
     {
         return (float)terrainHeightRange * Mathf.PerlinNoise((float)x / noiseX * noiseY + 0.001f, (float)z / noiseX * noiseY + 0.001f) + gameBaseHight;
+        
     }
 
     //1st apprach with 3d perlin noise
@@ -56,9 +61,11 @@ public class GameData : MonoBehaviour
     }
 
 
-    public  void CreateTerrainNoise(Vector2 offset){
-        noise2d = Noise.GenerateNoiseMap(ChunkWidth +1, ChunkWidth +1, seed, noiseScale, octaves, persistence, lacunarity, offset);
-        print(offset);
+    public  float[,] CreateTerrainNoise(Vector2 offset){
+        noise2d = Noise.GenerateNoiseMap((ChunkWidth +1) , (ChunkWidth +1) , seed, noiseScale, octaves, persistence, lacunarity, offset);
+        print(offset.x);
+        print(offset.y);
+        return noise2d;
     }
     public float getHeight(int x, int z)
     {
@@ -355,4 +362,15 @@ public class GameData : MonoBehaviour
 {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1}
 };
 
+    private void OnValidate()
+    {
+        
+        if (lacunarity < 1)
+            lacunarity = 1;
+        if (octaves < 0)
+            octaves = 0;
+        if (severity < 1)
+            severity = 1;
+ 
+    }
 }

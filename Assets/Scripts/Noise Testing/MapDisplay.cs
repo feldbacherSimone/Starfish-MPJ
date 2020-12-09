@@ -4,7 +4,15 @@ using UnityEngine;
 
 public class MapDisplay : MonoBehaviour
 {
+
+    
+    public Material matRef;
     public Renderer textureRenderer;
+
+    private void Awake()
+    {
+        
+    }
 
     public void DrawNoiseMap(float [,] noiseMap)
     {
@@ -22,6 +30,6 @@ public class MapDisplay : MonoBehaviour
         texture.Apply();
 
         textureRenderer.sharedMaterial.mainTexture = texture;
-        textureRenderer.transform.localScale = new Vector3(width, 1, height);
+      //  textureRenderer.transform.localScale = new Vector3(width, 1, height);
     }
 }

@@ -4,6 +4,8 @@ using UnityEngine;
 
 public class WorldGenerator : MonoBehaviour
 {
+    public Material matRef;
+    public GameObject plane;
     public int chunkSize = 16;
     Dictionary<Vector3Int, Chunk> chunks = new Dictionary<Vector3Int, Chunk>();
 
@@ -37,9 +39,21 @@ public class WorldGenerator : MonoBehaviour
             {
                 for (int z = 0; z < WorldsizeInChunks; z++)
                 {
-                       Vector3Int chunkPos = new Vector3Int(x * GameData.instance.ChunkWidth, y * GameData.instance.ChunkHeight, z * GameData.instance.ChunkWidth);
-                       chunks.Add(chunkPos, new Chunk(chunkPos, WorldHight * chunkSize, WorldsizeInChunks * chunkSize));
-                       chunks[chunkPos].chunkObject.transform.SetParent(transform);
+                    Vector3Int chunkPos = new Vector3Int(x * GameData.instance.ChunkWidth, y * GameData.instance.ChunkHeight, z * GameData.instance.ChunkWidth);
+                    chunks.Add(chunkPos, new Chunk(chunkPos, WorldHight * chunkSize, WorldsizeInChunks * chunkSize));
+                    chunks[chunkPos].chunkObject.transform.SetParent(transform);
+
+                    GameObject newPlane = GameObject.Instantiate(plane);
+                    newPlane.transform.SetParent(transform);
+                    newPlane.transform.position = chunkPos + new Vector3(0, -5, 0);
+                    MapDisplay mapDisplay = newPlane.GetComponent<MapDisplay>();
+                    mapDisplay.textureRenderer = newPlane.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>();
+                    mapDisplay.textureRenderer.material = new Material(matRef);
+                    mapDisplay.DrawNoiseMap(GameData.instance.CreateTerrainNoise(new Vector2(chunkPos.x , chunkPos.z)));
+                    print(chunkPos + "chunk position");
+
+                    
+
                 }
             }
         }
