@@ -6,7 +6,7 @@ public class MapDisplay : MonoBehaviour
 {
 
     
-    public Material matRef;
+    
     public Renderer textureRenderer;
 
     private void Awake()
