@@ -1,0 +1,16 @@
+{
+  "source": "Unity",
+  "applications": [
+    {
+      "app_key": "application.generated.unity.starfish_mpj.exe",
+      "launch_type": "url",
+      "url": "steam://launch/",
+      "action_manifest_path": "D:\\2020-21\\4AHMNM\\starfishMPJ\\Starfish-MPJ\\Assets\\StreamingAssets\\SteamVR\\actions.json",
+      "strings": {
+        "en_us": {
+          "name": "Starfish_MPJ [Testing]"
+        }
+      }
+    }
+  ]
+}
