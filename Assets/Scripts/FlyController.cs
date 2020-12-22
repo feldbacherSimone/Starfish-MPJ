@@ -5,8 +5,8 @@ using Valve.VR;
 
 public class FlyController : MonoBehaviour
 {
-    float speed;
-    float moveAmount; 
+    public float speed = 1;
+    Vector3 moveAmount; 
     public Transform trans;
     public Rigidbody rb;
    // public SteamVR_Action_Boolean trigger;
@@ -18,15 +18,30 @@ public class FlyController : MonoBehaviour
     // Start is called before the first frame update
     void Start()
     {
-        trans = gameObject.transform; 
+     
         rb = GetComponent<Rigidbody>();
     }
 
-   
+    private void Update()
+    {
+        if (Input.GetKey(KeyCode.U))
+            TestMovement();
+    }
+
+
     void movePlayer()
     {
-        moveAmount = speed * joystickInput.GetAxis(SteamVR_Input_Sources.LeftHand).y;
+        moveAmount = speed * new Vector3(joystickInput.GetAxis(SteamVR_Input_Sources.LeftHand).x, 0,  joystickInput.GetAxis(SteamVR_Input_Sources.LeftHand).y);
+        trans.position = trans.TransformDirection(moveAmount);
         
-        rb.AddForce(moveForce);
+    }
+
+    void TestMovement()
+    {
+        moveAmount = speed * new Vector3(0, 0, 1);
+        Vector3 moveAmountlocal = trans.TransformDirection(moveAmount);
+        trans.localPosition += moveAmountlocal; 
+        
+
     }
 }

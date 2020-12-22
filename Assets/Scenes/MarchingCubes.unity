@@ -587,6 +587,12 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1403599962}
   m_PrefabAsset: {fileID: 0}
+--- !u!4 &1660887816 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 496744, guid: dc06161b6d97feb419f45f03b62e14b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 2001553905}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &1776119536
 GameObject:
   m_ObjectHideFlags: 0
@@ -786,12 +792,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2001553905}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &2001553907 stripped
-Transform:
-  m_CorrespondingSourceObject: {fileID: 447954, guid: dc06161b6d97feb419f45f03b62e14b9,
-    type: 3}
-  m_PrefabInstance: {fileID: 2001553905}
-  m_PrefabAsset: {fileID: 0}
 --- !u!114 &2001553908
 MonoBehaviour:
   m_ObjectHideFlags: 0
@@ -804,7 +804,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbdbba187d104b44192b16e5d235a4b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  trans: {fileID: 2001553907}
+  speed: 0.02
+  trans: {fileID: 1660887816}
   rb: {fileID: 0}
   joystickInput:
     actionPath: '/actions/default/in/joystick '
