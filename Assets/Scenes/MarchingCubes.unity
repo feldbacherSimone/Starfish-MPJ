@@ -392,14 +392,14 @@ MonoBehaviour:
   noiseX: 16
   noiseY: 3
   noiseScale: 10
+  seed: 41
   octaves: 3
   persistence: 0.424
   lacunarity: 1.63
   severity: 4
-  smoothTerrain: 1
   offsetScale: 1
   offsetAdd: 0
-  seed: 41
+  smoothTerrain: 1
 --- !u!4 &933720465
 Transform:
   m_ObjectHideFlags: 0
@@ -804,10 +804,8 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbdbba187d104b44192b16e5d235a4b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.02
+  speed: 0.2
   trans: {fileID: 1660887816}
-  rb: {fileID: 0}
   joystickInput:
     actionPath: '/actions/default/in/joystick '
     needsReinit: 0
-  schub: 0
