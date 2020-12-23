@@ -5,14 +5,8 @@ using UnityEngine;
 public class MapDisplay : MonoBehaviour
 {
 
-    
-    
+    //Generates and Applies a Material Based on my Noise
     public Renderer textureRenderer;
-
-    private void Awake()
-    {
-        
-    }
 
     public void DrawNoiseMap(float [,] noiseMap)
     {
@@ -20,12 +14,14 @@ public class MapDisplay : MonoBehaviour
         int height = noiseMap.GetLength(1);
 
         Texture2D texture = new Texture2D(width, height);
+
         Color[] colorMap = new Color[width * height];
         for (int y = 0; y < height; y++)
             for(int x = 0; x < width; x++)
             {
                 colorMap[y * width + x] = Color.Lerp(Color.black, Color.white, noiseMap[x, y]);
             }
+
         texture.SetPixels(colorMap);
         texture.Apply();
 

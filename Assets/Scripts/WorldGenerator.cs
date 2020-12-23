@@ -31,6 +31,22 @@ public class WorldGenerator : MonoBehaviour
         }
     }
 
+    void InstantiateTestPlane(Vector3 chunkPos)
+    {
+        GameObject newPlane = GameObject.Instantiate(plane);
+        newPlane.transform.SetParent(transform);
+
+        newPlane.transform.GetChild(0).gameObject.transform.Rotate(new Vector3(0, 180, 0));
+        newPlane.transform.position = chunkPos + new Vector3(0, -5, 0);
+
+        MapDisplay mapDisplay = newPlane.GetComponent<MapDisplay>();
+        mapDisplay.textureRenderer = newPlane.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>();
+        mapDisplay.textureRenderer.material = new Material(matRef);
+        //I should make the whole offset calculation into it's own function as well because I always forget to change the values
+        mapDisplay.DrawNoiseMap(GameData.instance.CreateTerrainNoise(new Vector2(chunkPos.x * GameData.instance.offsetScale / GameData.instance.noiseScale * GameData.instance.offsetScale, chunkPos.z / GameData.instance.noiseScale)));
+        
+    }
+
     void Generate()
     {
         for (int x = 0; x < WorldsizeInChunks; x++)
@@ -43,23 +59,9 @@ public class WorldGenerator : MonoBehaviour
                     chunks.Add(chunkPos, new Chunk(chunkPos, WorldHight * chunkSize, WorldsizeInChunks * chunkSize));
                     chunks[chunkPos].chunkObject.transform.SetParent(transform);
 
-                    //note to future me: please put this in a seperate funktion I'm begging you!
-                    GameObject newPlane = GameObject.Instantiate(plane);
-                    newPlane.transform.SetParent(transform);
-
-                    newPlane.transform.GetChild(0).gameObject.transform.Rotate(new Vector3(0, 180, 0));
-                    newPlane.transform.position = chunkPos + new Vector3(0, -5, 0);
-
-                    MapDisplay mapDisplay = newPlane.GetComponent<MapDisplay>();
-                    mapDisplay.textureRenderer = newPlane.transform.GetChild(0).gameObject.GetComponent<MeshRenderer>();
-                    mapDisplay.textureRenderer.material = new Material(matRef);
-
-                    //I should make the whole offset calculation into it's own function as well because I always forget to change the values
-                    mapDisplay.DrawNoiseMap(GameData.instance.CreateTerrainNoise(new Vector2(chunkPos.x * GameData.instance.offsetScale / GameData.instance.noiseScale * GameData.instance.offsetScale, chunkPos.z / GameData.instance.noiseScale)));
+                    InstantiateTestPlane(chunkPos);
+                 
                     print(chunkPos + "chunk position");
-
-                    
-
                 }
             }
         }
