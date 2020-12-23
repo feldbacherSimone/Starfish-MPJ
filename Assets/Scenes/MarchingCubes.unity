@@ -587,9 +587,9 @@ Transform:
     type: 3}
   m_PrefabInstance: {fileID: 1403599962}
   m_PrefabAsset: {fileID: 0}
---- !u!4 &1660887816 stripped
+--- !u!4 &1470947921 stripped
 Transform:
-  m_CorrespondingSourceObject: {fileID: 496744, guid: dc06161b6d97feb419f45f03b62e14b9,
+  m_CorrespondingSourceObject: {fileID: 429506, guid: dc06161b6d97feb419f45f03b62e14b9,
     type: 3}
   m_PrefabInstance: {fileID: 2001553905}
   m_PrefabAsset: {fileID: 0}
@@ -804,8 +804,13 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: fbdbba187d104b44192b16e5d235a4b6, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  speed: 0.2
-  trans: {fileID: 1660887816}
+  swimmspeed: 0.05
+  risespeed: 0.01
+  moveAmount: {x: 0, y: 0, z: 0}
+  trans: {fileID: 1470947921}
   joystickInput:
     actionPath: '/actions/default/in/joystick '
+    needsReinit: 0
+  floatInput:
+    actionPath: '/actions/default/in/FloatButton '
     needsReinit: 0
