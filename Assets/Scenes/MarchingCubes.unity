@@ -121,6 +121,37 @@ NavMeshSettings:
     debug:
       m_Flags: 0
   m_NavMeshData: {fileID: 0}
+--- !u!1 &87181700
+GameObject:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  serializedVersion: 6
+  m_Component:
+  - component: {fileID: 87181701}
+  m_Layer: 0
+  m_Name: Corall1
+  m_TagString: Untagged
+  m_Icon: {fileID: 0}
+  m_NavMeshLayer: 0
+  m_StaticEditorFlags: 0
+  m_IsActive: 1
+--- !u!4 &87181701
+Transform:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 87181700}
+  m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
+  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalScale: {x: 1, y: 1, z: 1}
+  m_Children:
+  - {fileID: 626772781}
+  m_Father: {fileID: 0}
+  m_RootOrder: 8
+  m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
 --- !u!1 &578541183
 GameObject:
   m_ObjectHideFlags: 0
@@ -166,6 +197,96 @@ MonoBehaviour:
   m_Name: 
   m_EditorClassIdentifier: 
   textureRenderer: {fileID: 0}
+--- !u!1001 &626772780
+PrefabInstance:
+  m_ObjectHideFlags: 0
+  serializedVersion: 2
+  m_Modification:
+    m_TransformParent: {fileID: 87181701}
+    m_Modifications:
+    - target: {fileID: 6516474912308252307, guid: e8c39add9863b9f4197cbffea5012e6d,
+        type: 3}
+      propertyPath: m_LocalPosition.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6516474912308252307, guid: e8c39add9863b9f4197cbffea5012e6d,
+        type: 3}
+      propertyPath: m_LocalPosition.y
+      value: 0.0177
+      objectReference: {fileID: 0}
+    - target: {fileID: 6516474912308252307, guid: e8c39add9863b9f4197cbffea5012e6d,
+        type: 3}
+      propertyPath: m_LocalPosition.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6516474912308252307, guid: e8c39add9863b9f4197cbffea5012e6d,
+        type: 3}
+      propertyPath: m_LocalRotation.x
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6516474912308252307, guid: e8c39add9863b9f4197cbffea5012e6d,
+        type: 3}
+      propertyPath: m_LocalRotation.y
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6516474912308252307, guid: e8c39add9863b9f4197cbffea5012e6d,
+        type: 3}
+      propertyPath: m_LocalRotation.z
+      value: -0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6516474912308252307, guid: e8c39add9863b9f4197cbffea5012e6d,
+        type: 3}
+      propertyPath: m_LocalRotation.w
+      value: 1
+      objectReference: {fileID: 0}
+    - target: {fileID: 6516474912308252307, guid: e8c39add9863b9f4197cbffea5012e6d,
+        type: 3}
+      propertyPath: m_RootOrder
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6516474912308252307, guid: e8c39add9863b9f4197cbffea5012e6d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.x
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6516474912308252307, guid: e8c39add9863b9f4197cbffea5012e6d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.y
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6516474912308252307, guid: e8c39add9863b9f4197cbffea5012e6d,
+        type: 3}
+      propertyPath: m_LocalEulerAnglesHint.z
+      value: 0
+      objectReference: {fileID: 0}
+    - target: {fileID: 6516474912308252307, guid: e8c39add9863b9f4197cbffea5012e6d,
+        type: 3}
+      propertyPath: m_LocalScale.x
+      value: 24.358202
+      objectReference: {fileID: 0}
+    - target: {fileID: 6516474912308252307, guid: e8c39add9863b9f4197cbffea5012e6d,
+        type: 3}
+      propertyPath: m_LocalScale.y
+      value: 24.358202
+      objectReference: {fileID: 0}
+    - target: {fileID: 6516474912308252307, guid: e8c39add9863b9f4197cbffea5012e6d,
+        type: 3}
+      propertyPath: m_LocalScale.z
+      value: 24.358202
+      objectReference: {fileID: 0}
+    - target: {fileID: 7796982958353955968, guid: e8c39add9863b9f4197cbffea5012e6d,
+        type: 3}
+      propertyPath: m_Name
+      value: Coral7_low
+      objectReference: {fileID: 0}
+    m_RemovedComponents: []
+  m_SourcePrefab: {fileID: 100100000, guid: e8c39add9863b9f4197cbffea5012e6d, type: 3}
+--- !u!4 &626772781 stripped
+Transform:
+  m_CorrespondingSourceObject: {fileID: 6516474912308252307, guid: e8c39add9863b9f4197cbffea5012e6d,
+    type: 3}
+  m_PrefabInstance: {fileID: 626772780}
+  m_PrefabAsset: {fileID: 0}
 --- !u!1 &705507993
 GameObject:
   m_ObjectHideFlags: 0
@@ -384,6 +505,8 @@ MonoBehaviour:
   m_EditorClassIdentifier: 
   WorldsizeInChunks: 2
   WorldHeight: 1
+  corall: {fileID: 87181700}
+  numberOfCoralls: 10
   terrainSurface: 0.4
   gameBaseHight: 60
   terrainHeightRange: 10

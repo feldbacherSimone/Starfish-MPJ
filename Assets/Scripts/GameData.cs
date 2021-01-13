@@ -8,6 +8,8 @@ public class GameData : MonoBehaviour
 
     public  int WorldsizeInChunks = 2;
     public int WorldHeight = 1;
+    public GameObject corall;
+    public int numberOfCoralls;
     [Range(0,1)]
     public  float terrainSurface = 0.4f; // also acts as density threshhold
     public  float gameBaseHight = 60f;
