@@ -190,12 +190,13 @@ public class Chunk
       
     }
 
-    public void SpawnObjects(int number, GameObject Corall, Vector3 offset)
+    public void SpawnObjects(int number, GameObject[] Coralls, Vector3 offset)
     {
         for (int i = 0; i < number; i++)
         {
             Vector3 pos = vertices[Random.Range(0, vertices.Count)] + offset;
-            GameObject.Instantiate(Corall, pos, Quaternion.identity, chunkObject.transform);
+           GameObject insatnce =  GameObject.Instantiate(Coralls[Random.Range(0, GameData.instance.corall.Length)], pos, Quaternion.identity, chunkObject.transform);
+            insatnce.transform.localScale = insatnce.transform.localScale * Random.Range(1f, GameData.instance.sizeVariation+1);
 
         }
     }

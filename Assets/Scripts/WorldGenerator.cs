@@ -59,7 +59,7 @@ public class WorldGenerator : MonoBehaviour
                     Vector3Int chunkPos = new Vector3Int(x * GameData.instance.ChunkWidth, y * GameData.instance.ChunkHeight, z * GameData.instance.ChunkWidth);
                     chunks.Add(chunkPos, new Chunk(chunkPos, WorldHight * chunkSize, WorldsizeInChunks * chunkSize));
                     chunks[chunkPos].chunkObject.transform.SetParent(transform);
-                    chunks[chunkPos].SpawnObjects( GameData.instance.numberOfCoralls, GameData.instance.corall,chunkPos );
+                    chunks[chunkPos].SpawnObjects( GameData.instance.numberOfCoralls, GameData.instance.corall, chunkPos );
 
                     InstantiateTestPlane(chunkPos);
                  
