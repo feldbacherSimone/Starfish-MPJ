@@ -2,7 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameData : MonoBehaviour
+public  class GameData : MonoBehaviour
 {
     [Header("World Settings")]
 

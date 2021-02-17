@@ -72,7 +72,7 @@ public static class Noise
         return noiseMap;
 
 
-        //I will actuall kms if this doesn't work 
+        //I will be very sad if this doesn't work 
         // :)
     }
 }

@@ -2,6 +2,10 @@
 using System.Collections.Generic;
 using UnityEngine;
 
+
+
+//this should only contain information/code realted to the world generation 
+//thigs like plant distribution and chunk generation need to be handled by different classes 
 public class WorldGenerator : MonoBehaviour
 {
     public Material matRef;
@@ -14,7 +18,9 @@ public class WorldGenerator : MonoBehaviour
 
     private void Start()
     {
+        
         Generate();
+        HideTiles.instance.Init();
     }
 
     private void Update()
@@ -59,6 +65,7 @@ public class WorldGenerator : MonoBehaviour
                     Vector3Int chunkPos = new Vector3Int(x * GameData.instance.ChunkWidth, y * GameData.instance.ChunkHeight, z * GameData.instance.ChunkWidth);
                     chunks.Add(chunkPos, new Chunk(chunkPos, WorldHight * chunkSize, WorldsizeInChunks * chunkSize));
                     chunks[chunkPos].chunkObject.transform.SetParent(transform);
+                    chunks[chunkPos].chunkObject.tag = "tile";
                     chunks[chunkPos].SpawnObjects( GameData.instance.numberOfCoralls, GameData.instance.corall, chunkPos );
 
                     InstantiateTestPlane(chunkPos);
