@@ -842,7 +842,7 @@ GameObject:
   - component: {fileID: 933720465}
   - component: {fileID: 933720464}
   m_Layer: 0
-  m_Name: Corall2
+  m_Name: gameData
   m_TagString: Untagged
   m_Icon: {fileID: 0}
   m_NavMeshLayer: 0
@@ -860,7 +860,7 @@ MonoBehaviour:
   m_Script: {fileID: 11500000, guid: 391197cba301f6c4ab37445d95cb8e8d, type: 3}
   m_Name: 
   m_EditorClassIdentifier: 
-  WorldsizeInChunks: 2
+  WorldsizeInChunks: 20
   WorldHeight: 1
   corall:
   - {fileID: 1286295250}
@@ -892,7 +892,7 @@ Transform:
   m_PrefabAsset: {fileID: 0}
   m_GameObject: {fileID: 933720463}
   m_LocalRotation: {x: 0, y: 0, z: 0, w: 1}
-  m_LocalPosition: {x: 0, y: 0, z: 0}
+  m_LocalPosition: {x: 0, y: 0, z: -1.89}
   m_LocalScale: {x: 0.42, y: 1, z: 1}
   m_Children: []
   m_Father: {fileID: 0}
@@ -981,6 +981,28 @@ Transform:
   m_Father: {fileID: 0}
   m_RootOrder: 1
   m_LocalEulerAnglesHint: {x: 0, y: 0, z: 0}
+--- !u!1 &988703121 stripped
+GameObject:
+  m_CorrespondingSourceObject: {fileID: 110716, guid: dc06161b6d97feb419f45f03b62e14b9,
+    type: 3}
+  m_PrefabInstance: {fileID: 2001553905}
+  m_PrefabAsset: {fileID: 0}
+--- !u!114 &988703125
+MonoBehaviour:
+  m_ObjectHideFlags: 0
+  m_CorrespondingSourceObject: {fileID: 0}
+  m_PrefabInstance: {fileID: 0}
+  m_PrefabAsset: {fileID: 0}
+  m_GameObject: {fileID: 988703121}
+  m_Enabled: 1
+  m_EditorHideFlags: 0
+  m_Script: {fileID: 11500000, guid: f379c83b25d39424888b9ca0a87bb58e, type: 3}
+  m_Name: 
+  m_EditorClassIdentifier: 
+  tileTag: tile
+  tileSize: {x: 16, y: 0, z: 16}
+  maxDistance: 128
+  tiles: []
 --- !u!1 &1286295250
 GameObject:
   m_ObjectHideFlags: 0
@@ -1374,21 +1396,25 @@ PrefabInstance:
   m_Modification:
     m_TransformParent: {fileID: 0}
     m_Modifications:
+    - target: {fileID: 105336, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
+      propertyPath: m_IsActive
+      value: 1
+      objectReference: {fileID: 0}
     - target: {fileID: 107946, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_Name
       value: Player
       objectReference: {fileID: 0}
     - target: {fileID: 447954, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_LocalPosition.x
-      value: 0
+      value: 83
       objectReference: {fileID: 0}
     - target: {fileID: 447954, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_LocalPosition.y
-      value: 0
+      value: 31
       objectReference: {fileID: 0}
     - target: {fileID: 447954, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_LocalPosition.z
-      value: 23.8
+      value: 69.9
       objectReference: {fileID: 0}
     - target: {fileID: 447954, guid: dc06161b6d97feb419f45f03b62e14b9, type: 3}
       propertyPath: m_LocalRotation.x
@@ -1442,22 +1468,6 @@ GameObject:
     type: 3}
   m_PrefabInstance: {fileID: 2001553905}
   m_PrefabAsset: {fileID: 0}
---- !u!114 &2001553907
-MonoBehaviour:
-  m_ObjectHideFlags: 0
-  m_CorrespondingSourceObject: {fileID: 0}
-  m_PrefabInstance: {fileID: 0}
-  m_PrefabAsset: {fileID: 0}
-  m_GameObject: {fileID: 2001553906}
-  m_Enabled: 1
-  m_EditorHideFlags: 0
-  m_Script: {fileID: 11500000, guid: f379c83b25d39424888b9ca0a87bb58e, type: 3}
-  m_Name: 
-  m_EditorClassIdentifier: 
-  tileTag: tile
-  tileSize: {x: 16, y: 0, z: 16}
-  maxDistance: 64
-  tiles: []
 --- !u!114 &2001553908
 MonoBehaviour:
   m_ObjectHideFlags: 0

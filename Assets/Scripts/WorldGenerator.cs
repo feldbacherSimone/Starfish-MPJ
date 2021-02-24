@@ -68,7 +68,7 @@ public class WorldGenerator : MonoBehaviour
                     chunks[chunkPos].chunkObject.tag = "tile";
                     chunks[chunkPos].SpawnObjects( GameData.instance.numberOfCoralls, GameData.instance.corall, chunkPos );
 
-                    InstantiateTestPlane(chunkPos);
+                    //InstantiateTestPlane(chunkPos);
                  
                     print(chunkPos + "chunk position");
                 }
