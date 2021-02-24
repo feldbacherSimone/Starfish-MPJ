@@ -22,6 +22,7 @@ public class HideTiles : MonoBehaviour
 
     private void Start()
     {
+        Debug.Log(gameObject.name);
         instance = this;
     }
     public void Init()
