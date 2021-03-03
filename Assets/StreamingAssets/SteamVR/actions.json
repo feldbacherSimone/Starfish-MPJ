@@ -51,7 +51,8 @@
     },
     {
       "name": "/actions/default/in/joystick ",
-      "type": "vector2"
+      "type": "vector2",
+      "requirement": "mandatory"
     },
     {
       "name": "/actions/default/in/FloatButton ",
