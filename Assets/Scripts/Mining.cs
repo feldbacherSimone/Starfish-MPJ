@@ -13,8 +13,9 @@ public class Mining : MonoBehaviour
     AudioClip[] breakSounds; 
 
 
-    private void OnCollisionEnter(Collision collision)
+    private void OnTriggerEnter(Collider collision)
     {
+        Debug.Log("Collide with" + collision.gameObject.name);
         if (collision.gameObject.tag == "collectable")
         {
             playSound((miningSounds[Random.Range(0, miningSounds.Length - 1)]));
