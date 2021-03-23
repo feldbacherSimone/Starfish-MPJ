@@ -14,7 +14,7 @@ using Valve.VR.InteractionSystem;
  
      private void HandHoverUpdate(Hand hand)
      {
-         if (hand.ObjectIsAttached(gameObject.transform.parent.gameObject))
+         if (hand)
          {
              holdingHandle = true;
  
