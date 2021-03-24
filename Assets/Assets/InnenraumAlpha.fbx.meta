@@ -3,7 +3,22 @@ guid: d420e2be55f59e44288c69d21e7bf01a
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable: []
-  externalObjects: {}
+  externalObjects:
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: Display
+    second: {fileID: 2100000, guid: 8dbbd254d9574bd479c61abcebb97a7b, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: OrangeLED
+    second: {fileID: 2100000, guid: e1bcf5f75b25dd24495834490d7f8a62, type: 2}
+  - first:
+      type: UnityEngine:Material
+      assembly: UnityEngine.CoreModule
+      name: lambert1
+    second: {fileID: 2100000, guid: 3f2d6548a2e790142b813619a32fbb0b, type: 2}
   materials:
     materialImportMode: 1
     materialName: 0
