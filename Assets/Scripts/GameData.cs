@@ -2,12 +2,17 @@
 using System.Collections.Generic;
 using UnityEngine;
 
-public class GameData : MonoBehaviour
+public  class GameData : MonoBehaviour
 {
     [Header("World Settings")]
 
     public  int WorldsizeInChunks = 2;
     public int WorldHeight = 1;
+    public GameObject[] corall;
+    [Range(1, 10)]
+    public float sizeVariation =  2f;
+
+    public int numberOfCoralls;
     [Range(0,1)]
     public  float terrainSurface = 0.4f; // also acts as density threshhold
     public  float gameBaseHight = 60f;
@@ -21,16 +26,22 @@ public class GameData : MonoBehaviour
     public  float noiseX = 16f;
     public  float noiseY = 3f;
     public  float noiseScale = 0.05f;
+    public int seed;
 
-    public  int octaves;
+    [Header("Octave Settigns")]
+    public  int octaves; //Noumber of "layers" in the noise
     [Range(0, 1)]
-    public  float persistence;
-    public  float lacunarity;
+    public  float persistence; //Ratio of how much every octave effects the noise map
+    public  float lacunarity;  //Ratio of the scale of the different octaves
     [Range(1, 16)]
-    public float severity;
+    public float severity  = 1; //Controlls the range of Heights in the terrain 
+  
+    [Header("Debug Stuff")]
+    public float offsetScale;
+    public float offsetAdd;
+    public bool smoothTerrain = true;
 
-    public  int seed;
-    //public Vector2 offset;
+ 
 
     public float[,] noise2d;
 
@@ -42,11 +53,11 @@ public class GameData : MonoBehaviour
 
     }
 
-
     //Old function for hight values
     public float GetTerrainHeight (int x, int z)
     {
         return (float)terrainHeightRange * Mathf.PerlinNoise((float)x / noiseX * noiseY + 0.001f, (float)z / noiseX * noiseY + 0.001f) + gameBaseHight;
+        
     }
 
     //1st apprach with 3d perlin noise
@@ -55,17 +66,21 @@ public class GameData : MonoBehaviour
         return PerlinNoise3D(x  * noiseScale, y  * noiseScale, z  * noiseScale) ;
     }
 
-
-    public  void CreateTerrainNoise(Vector2 offset){
-        noise2d = Noise.GenerateNoiseMap(ChunkWidth +1, ChunkWidth +1, seed, noiseScale, octaves, persistence, lacunarity, offset);
-        print(offset);
+    //Create a new Array of noice values
+    public  float[,] CreateTerrainNoise(Vector2 offset){
+        noise2d = Noise.GenerateNoiseMap((ChunkWidth +1) , (ChunkWidth +1) , seed, noiseScale, octaves, persistence, lacunarity, offset);
+        print(offset.x);
+        print(offset.y);
+        return noise2d;
     }
+    //Look up Height in existing 2D Array (I did this so the noise map only has to generate once for every chunk
+    //Idk if it makes that big of a differnce
     public float getHeight(int x, int z)
     {
         return noise2d[x, z] * severity;
     }
 
-    //in collaboration with unity answers ;)
+    //For the 3d Perlin Noise (not mine, I just got it online) 
     public static float PerlinNoise3D(float x, float y, float z)
     {
         float xy = Mathf.PerlinNoise(x, y);
@@ -77,6 +92,8 @@ public class GameData : MonoBehaviour
 
         return (xy + xz + yz + yx + zx + zy) / 6;
     }
+
+    #region Marching Cube resources (Yeah I don't understand it either)
 
     public static Vector3Int[] CornerTable = new Vector3Int[8]
     {
@@ -355,4 +372,16 @@ public class GameData : MonoBehaviour
 {-1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1, -1}
 };
 
+    #endregion
+
+    //This keeps me from tyipng usless values in the inspector 
+    private void OnValidate()
+    {     
+        if (lacunarity < 1)
+            lacunarity = 1;
+        if (octaves < 0)
+            octaves = 0;
+        if (severity < 1)
+            severity = 1;
+    }
 }

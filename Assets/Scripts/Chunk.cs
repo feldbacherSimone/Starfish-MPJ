@@ -4,9 +4,6 @@ using UnityEngine;
 
 public class Chunk 
 {
-
-    public bool smoothTerrain = true;
-
     List<Vector3> vertices = new List<Vector3>();
     List<int> triangles = new List<int>();
 
@@ -24,15 +21,8 @@ public class Chunk
     float[,,] noise3d;
     //int _configIndex = -1;
 
-
-    
-  
-
-
     public Chunk (Vector3Int _position, int _height, int worldSize )
     {
-
-
         chunkObject = new GameObject();
         chunkObject.name = string.Format("Chunk {0}, {1}", _position.x, _position.z);
 
@@ -47,21 +37,22 @@ public class Chunk
         //Create float array to store hight onformation in 
         terrainMap = new float[width +1, height+1, width+1];
 
-        GameData.instance.CreateTerrainNoise(new Vector2(chunkPosition.x , chunkPosition.z ));
+        //Deviding the offset by the noise scale fixes the seams for the most part (the edges are still a bit messy) 
+        //I could tell you why if I were smart enough, sadly I am not :/
+        GameData.instance.CreateTerrainNoise(new Vector2(chunkPosition.x * GameData.instance.offsetScale / GameData.instance.noiseScale , chunkPosition.z / GameData.instance.noiseScale));
 
+        Debug.Log(chunkPosition.x * GameData.instance.offsetScale);
         //float[,,] noise3d = Noise3d(_height);
+
         PopulateTerrainMap(_position, worldSize, noise3d);
         CreateMeshdata();
-        meshCollider.sharedMesh = mesh;
-        
-
+        meshCollider.sharedMesh = mesh;       
     }
 
     int width { get { return GameData.instance.ChunkWidth; } }
     int height { get { return GameData.instance.ChunkHeight; } }
     float terrainSurface { get { return GameData.instance.terrainSurface; } }
 
-    
 
     float SampleTerrain (Vector3Int point)
     {
@@ -107,7 +98,7 @@ public class Chunk
         }
     }
 
-    int getCubeConfig(float[] cube)
+    int getCubeConfig(float[] cube) // this calculates the right configuration for our single 1x1 cube by looking at wizch of the corners are below/above the Surrface Level
     {
         int configerationIndex = 0;
 
@@ -115,14 +106,14 @@ public class Chunk
         {
             if (cube[i] > terrainSurface)
             {
-                configerationIndex |= 1 << i;
+                configerationIndex |= 1 << i; //Some binary magic that I only half understand 
             }
 
         }
         return configerationIndex;
     }
 
-    void MarchCubes(Vector3Int position)
+    void MarchCubes(Vector3Int position) //this function populates our vert and triangle arrays based on our terrain data
     {
         float[] cube = new float[8];
         for (int i = 0; i < 8; i++)
@@ -137,13 +128,13 @@ public class Chunk
 
         int edgeIndex = 0;
 
-        for (int i = 0; i < 5; i++)
+        for (int i = 0; i < 5; i++) //There are a maximum of 5 tries in a cube 
         {
-            for (int p = 0; p < 3; p++)
+            for (int p = 0; p < 3; p++) //There are 3 Verts in a triangle 
             {
                 int indice = GameData.TriangleTable[configIndex, edgeIndex];
 
-                if (indice == -1)
+                if (indice == -1) //-1 in the trianle table basically means that there are no more verts in the cube left 
                     return;
 
                 Vector3 vert1 = position + GameData.CornerTable[GameData.EdgeIndexes[indice, 0]];
@@ -151,7 +142,7 @@ public class Chunk
 
                 Vector3 vertPosition;
 
-                if (smoothTerrain)
+                if (GameData.instance.smoothTerrain)
                 {
                     float vert1Sample = cube[GameData.EdgeIndexes[indice, 0]];
                     float vert2Sample = cube[GameData.EdgeIndexes[indice, 1]];
@@ -187,16 +178,27 @@ public class Chunk
         triangles.Clear();
     }
 
-    void BuildMesh()
+    void BuildMesh() // Build a mesh based on the triangles and verts we created 
     {
         mesh = new Mesh();
 
         mesh.vertices = vertices.ToArray();
-        mesh.triangles = triangles.ToArray();
+        mesh.triangles = triangles.ToArray(); //Triangles basically tell you the order the differnet vertecies are connected in 
         mesh.RecalculateNormals();
         meshFilter.mesh = mesh;
 
+      
     }
 
-   
+    public void SpawnObjects(int number, GameObject[] Coralls, Vector3 offset)
+    {
+        for (int i = 0; i < number; i++)
+        {
+            Vector3 pos = vertices[Random.Range(0, vertices.Count)] + offset;
+           GameObject insatnce =  GameObject.Instantiate(Coralls[Random.Range(0, GameData.instance.corall.Length)], pos, Quaternion.identity, chunkObject.transform);
+            insatnce.transform.localScale = insatnce.transform.localScale * Random.Range(1f, GameData.instance.sizeVariation+1);
+
+        }
+    }
+
 }
