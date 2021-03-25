@@ -31,7 +31,7 @@ public class Chunk
 
         meshFilter = chunkObject.AddComponent<MeshFilter>();
         meshRenderer = chunkObject.AddComponent<MeshRenderer>();
-        meshRenderer.material = Resources.Load<Material>("Materials/TerrainMAT");
+        meshRenderer.material = Resources.Load<Material>("Materials/Sand 1");
         meshCollider = chunkObject.AddComponent<MeshCollider>();
         
         //Create float array to store hight onformation in 

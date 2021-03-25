@@ -74,6 +74,7 @@ public class WorldGenerator : MonoBehaviour
                 }
             }
         }
+        gameObject.transform.position = new Vector3(-(WorldsizeInChunks * chunkSize), 0, -(WorldsizeInChunks * chunkSize));
         Debug.Log(string.Format("{0} x {0} World Generated", (GameData.instance.ChunkWidth * WorldsizeInChunks)));
     }
 }
