@@ -12,19 +12,20 @@ public class effect : MonoBehaviour
 
     private int frameIndex;
     [SerializeField]
-    private Projector projector;    //Projector GameObject
+    private DecalProjector projector;    //Projector GameObject
 
     // Start is called before the first frame update
     void Start()
     {
-        projector = GetComponent<Projector>();
+        projector = GetComponent<DecalProjector>();
         NextFrame();
         InvokeRepeating("NextFrame", 1 / fps, 1 / fps);
     }
 
     void NextFrame()
     {
-        projector.material.SetTexture("_ShadowTex", frames[frameIndex]);
+        projector.material.SetTexture("_BaseColorMap", frames[frameIndex]);
+        projector.material.SetTexture("_EmissiveColorMap", frames[frameIndex]);
         frameIndex = (frameIndex + 1) % frames.Length;
     }
 
