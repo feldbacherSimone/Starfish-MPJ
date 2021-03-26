@@ -14,6 +14,7 @@ public class setSpawn : MonoBehaviour
 
         spawnPoint = GameObject.FindGameObjectWithTag("SpawnPoint").transform;
         player = GameObject.FindGameObjectWithTag("MainPlayer");
+        player.transform.position = spawnPoint.position;
     }
 
     // Update is called once per frame
