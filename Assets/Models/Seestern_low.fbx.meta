@@ -1,5 +1,7 @@
 fileFormatVersion: 2
-guid: c53bd2fdeddbbd3438c156360ed10df5
+guid: e7e753c12c81dc146b9dced9bbef8963
+labels:
+- Prop
 ModelImporter:
   serializedVersion: 19300
   internalIDToNameTable: []

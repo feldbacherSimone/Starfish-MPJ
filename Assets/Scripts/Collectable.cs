@@ -9,6 +9,9 @@ public class Collectable : MonoBehaviour
     
     public void destroy()
     {
+        //instantiate shards and add force to them so they fly away 
+        //shards could be saved in a prefab 
+
         GameObject.Destroy(gameObject);
     }
 }
