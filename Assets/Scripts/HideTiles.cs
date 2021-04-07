@@ -1,6 +1,7 @@
 ﻿using System.Collections;
 using System.Collections.Generic;
 using UnityEngine;
+using UnityEngine.SceneManagement;
 
 public class HideTiles : MonoBehaviour
 {
@@ -18,12 +19,19 @@ public class HideTiles : MonoBehaviour
     [SerializeField]
     private GameObject[] tiles;
 
+    public bool rightScene = false;
+    private Scene scene;
     // Use this for initialization
 
     private void Start()
     {
         Debug.Log(gameObject.name);
         instance = this;
+        scene = SceneManager.GetActiveScene();
+        if (scene.buildIndex == 2)
+            rightScene = true;
+        else
+            rightScene = false;
     }
     public void Init()
     {
@@ -33,6 +41,10 @@ public class HideTiles : MonoBehaviour
 
     void DeactivateDistantTiles()
     {
+        if (rightScene)
+        {
+
+       
         Vector3 playerPosition = this.gameObject.transform.position;
 
         foreach (GameObject tile in tiles)
@@ -50,12 +62,12 @@ public class HideTiles : MonoBehaviour
             {
                 tile.SetActive(true);
             }
+            }
         }
+         
     }
 
-    void Update()
-    {
-        DeactivateDistantTiles();
-    }
+   
 
+    
 }
