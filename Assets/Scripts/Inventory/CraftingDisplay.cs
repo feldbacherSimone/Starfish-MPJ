@@ -27,7 +27,7 @@ public class CraftingDisplay : MonoBehaviour
         {
             Item item = ItemDatabase.instance.GetItem(ingredient.name);
 
-            GameObject newLine = GameObject.Instantiate(listTemplate, positionRefernce.transform); 
+            GameObject newLine = GameObject.Instantiate(listTemplate, gameObject.transform); 
 
             newLine.transform.position = positionRefernce.position + new Vector3( 0, offset, 0);
             newLine.GetComponent<SpriteRenderer>().sprite = item.sprite;

@@ -13,6 +13,7 @@ public class ScreenUI : MonoBehaviour
 
     private void Update()
     {
+        destuctionPercent = GameProgress.instance.progressPercent;
         repairPercentTEXT.text = destuctionPercent.ToString() + "%";
     }
 }
