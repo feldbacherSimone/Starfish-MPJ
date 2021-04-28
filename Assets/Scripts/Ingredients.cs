@@ -7,9 +7,10 @@ public class Item
 {
     public int id;
     public string name;
-    public Sprite sprite; 
+    public Sprite sprite;
+    public int amountCollectd; 
 
-    public Item(int id, string name, Sprite sprite)
+    public Item(int id, string name )
     {
         this.id = id;
         this.name = name;
@@ -27,6 +28,6 @@ public class Item
 [System.Serializable]
 public class Ingredient
 {
-   public  Item item;
+   public string name;
    public int ammount;
 }

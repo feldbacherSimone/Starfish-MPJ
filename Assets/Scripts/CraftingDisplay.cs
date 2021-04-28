@@ -25,10 +25,16 @@ public class CraftingDisplay : MonoBehaviour
         float offset = 0; 
         foreach (Ingredient ingredient in ingredients)
         {
-            GameObject newLine = GameObject.Instantiate(listTemplate, positionRefernce.transform);
+            Item item = ItemDatabase.instance.GetItem(ingredient.name);
+
+            GameObject newLine = GameObject.Instantiate(listTemplate, positionRefernce.transform); 
+
             newLine.transform.position = positionRefernce.position + new Vector3( 0, offset, 0);
-            newLine.GetComponent<SpriteRenderer>().sprite = ingredient.item.sprite;
+            newLine.GetComponent<SpriteRenderer>().sprite = item.sprite;
+
             newLine.transform.GetChild(0).gameObject.GetComponent<TextMeshPro>().text = ingredient.ammount.ToString();
+            newLine.transform.GetChild(1).gameObject.GetComponent<TextMeshPro>().text = item.amountCollectd.ToString();
+
             offset += offsetammount; 
         }
     }
