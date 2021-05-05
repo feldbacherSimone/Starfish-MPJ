@@ -4,5 +4,14 @@
 EditorBuildSettings:
   m_ObjectHideFlags: 0
   serializedVersion: 2
-  m_Scenes: []
+  m_Scenes:
+  - enabled: 1
+    path: Assets/Scenes/StartTerrain.unity
+    guid: 2b86f8f5523cf734397e7ff4d048031f
+  - enabled: 1
+    path: Assets/Scenes/shipInside.unity
+    guid: 2cc498ca52e9ecc48b1a781bab234860
+  - enabled: 1
+    path: Assets/Scenes/MarchingCubes 1.unity
+    guid: d026b3c123c07d840a400af953f45c7c
   m_configObjects: {}
