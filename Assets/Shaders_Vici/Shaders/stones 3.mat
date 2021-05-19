@@ -20,7 +20,7 @@ Material:
   m_CorrespondingSourceObject: {fileID: 0}
   m_PrefabInstance: {fileID: 0}
   m_PrefabAsset: {fileID: 0}
-  m_Name: stones
+  m_Name: stones 3
   m_Shader: {fileID: -6465566751694194690, guid: c617391c5274aa34b9007e5036d504b6,
     type: 3}
   m_ShaderKeywords: _NORMALMAP_TANGENT_SPACE
@@ -40,11 +40,11 @@ Material:
     serializedVersion: 3
     m_TexEnvs:
     - Texture2D_51AB210A:
-        m_Texture: {fileID: 2800000, guid: bc51ce897c3829c408ba9c4bf9390954, type: 3}
+        m_Texture: {fileID: 2800000, guid: 40d7e466eee8bf94887ff82c1e1255e4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_7A701326:
-        m_Texture: {fileID: 2800000, guid: c1ad52c6b913ce247ae933cd6d8cea55, type: 3}
+        m_Texture: {fileID: 2800000, guid: 40d7e466eee8bf94887ff82c1e1255e4, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_83319B8C:
@@ -56,7 +56,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_C8C9AA72:
-        m_Texture: {fileID: 2800000, guid: 4d45e1355977ee44ebffdf905fe30d27, type: 3}
+        m_Texture: {fileID: 2800000, guid: 30cc329797fd9684bb7c6608318df508, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - Texture2D_DC5EB1D4:
@@ -148,7 +148,7 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     m_Floats:
-    - Vector1_DBE2B718: 0.07
+    - Vector1_DBE2B718: 0.11
     - _AORemapMax: 1
     - _AORemapMin: 0
     - _ATDistance: 1
