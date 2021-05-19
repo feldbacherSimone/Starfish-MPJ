@@ -35,5 +35,7 @@ public class Mining : MonoBehaviour
     {
         audioSource.clip = clip;
         audioSource.Play();
+
+        
     }
 }

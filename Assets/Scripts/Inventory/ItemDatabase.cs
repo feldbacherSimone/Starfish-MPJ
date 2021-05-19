@@ -42,7 +42,7 @@ public class ItemDatabase : MonoBehaviour
         return items.Find(item => item.name == name);
     }
 
-    void showItemAmmount()
+    public void showItemAmmount()
     {
         foreach (Item item in items)
         {
