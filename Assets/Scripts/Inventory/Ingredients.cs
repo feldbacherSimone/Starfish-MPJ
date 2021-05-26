@@ -8,7 +8,7 @@ public class Item
     public int id;
     public string name;
     public Sprite sprite;
-    public int amountCollectd = 2; 
+    public int amountCollectd; 
 
     public Item(int id, string name )
     {

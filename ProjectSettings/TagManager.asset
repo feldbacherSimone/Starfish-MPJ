@@ -8,6 +8,8 @@ TagManager:
   - collectable
   - MainPlayer
   - SpawnPoint
+  - projectile
+  - Item
   layers:
   - Default
   - TransparentFX

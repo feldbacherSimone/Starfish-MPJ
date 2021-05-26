@@ -29,7 +29,7 @@ public class CraftingDisplay : MonoBehaviour
 
             GameObject newLine = GameObject.Instantiate(listTemplate, gameObject.transform); 
 
-            newLine.transform.position = positionRefernce.position + new Vector3( 0, offset, 0);
+            newLine.transform.localPosition = positionRefernce.position + new Vector3( 0, offset, 0);
             newLine.GetComponent<SpriteRenderer>().sprite = item.sprite;
 
             newLine.transform.GetChild(0).gameObject.GetComponent<TextMeshPro>().text = ingredient.ammount.ToString();
