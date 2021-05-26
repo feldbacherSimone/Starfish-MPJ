@@ -40,11 +40,11 @@ Material:
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _BaseColorMap:
-        m_Texture: {fileID: 2800000, guid: 91e32922922c82d43a40b0e1541fd9c4, type: 3}
+        m_Texture: {fileID: 2800000, guid: 166595ae0b464a14999bff984a68e4f1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _EmissiveColorMap:
-        m_Texture: {fileID: 2800000, guid: 91e32922922c82d43a40b0e1541fd9c4, type: 3}
+        m_Texture: {fileID: 2800000, guid: 166595ae0b464a14999bff984a68e4f1, type: 3}
         m_Scale: {x: 1, y: 1}
         m_Offset: {x: 0, y: 0}
     - _MaskMap:
