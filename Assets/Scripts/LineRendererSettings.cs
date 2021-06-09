@@ -2,6 +2,7 @@
 using System.Collections.Generic;
 using UnityEngine;
 using UnityEngine.UI;
+using Valve.VR;
 
 public class LineRendererSettings : MonoBehaviour
 {
@@ -14,7 +15,8 @@ public class LineRendererSettings : MonoBehaviour
     public GameObject panel;
     public Image img;
     public Button btn;
-    
+    public SteamVR_Action_Vector2 joystickInput;
+
     void Start()
     {
     
@@ -41,8 +43,9 @@ public class LineRendererSettings : MonoBehaviour
     void Update()
     {
         AlignLineRenderer(rend);
-        if (AlignLineRenderer(rend) && Input.GetAxis("Submit") > 0)
+        if (AlignLineRenderer(rend) && joystickInput.GetAxis(SteamVR_Input_Sources.RightHand).x > 0)
         {
+            print("Rightahnd X = " + joystickInput.GetAxis(SteamVR_Input_Sources.RightHand).x.ToString());
             btn.onClick.Invoke();
         }
     }
