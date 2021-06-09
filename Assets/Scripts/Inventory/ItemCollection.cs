@@ -4,8 +4,8 @@ using UnityEngine;
 
 public class ItemCollection : MonoBehaviour
 {
-
-
+    public AudioClip pickUpSoubd;
+    public CraftingDisplay display; 
 
     void OnTriggerEnter(Collider collision)
     {
@@ -34,6 +34,9 @@ public class ItemCollection : MonoBehaviour
                 item.amountCollectd++;
                 print(item.name + "was collected");
                 ItemDatabase.instance.showItemAmmount();
+                GetComponent<AudioSource>().clip = pickUpSoubd;
+                GetComponent<AudioSource>().Play();
+                display.CreateRecipy();
             }
       
         }

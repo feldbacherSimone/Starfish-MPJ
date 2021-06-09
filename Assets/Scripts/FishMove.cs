@@ -98,7 +98,7 @@ public class FishMove : MonoBehaviour
 		if (tankCenterGoal == null)
 		{
 			Debug.LogError("[" + name + "] The tankCenterGoal parameter is required but is null.");
-			UnityEditor.EditorApplication.isPlaying = false;
+			
 		}
 
 		bodyTransform = transform.Find("Body");

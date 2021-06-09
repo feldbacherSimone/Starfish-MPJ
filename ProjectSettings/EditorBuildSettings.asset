@@ -6,12 +6,18 @@ EditorBuildSettings:
   serializedVersion: 2
   m_Scenes:
   - enabled: 1
-    path: Assets/Scenes/StartTerrain.unity
-    guid: 2b86f8f5523cf734397e7ff4d048031f
-  - enabled: 1
     path: Assets/Scenes/shipInside.unity
     guid: 2cc498ca52e9ecc48b1a781bab234860
   - enabled: 1
+    path: Assets/Scenes/StartTerrain 1.unity
+    guid: 7b8a447382a3f2948af48264d2d2095d
+  - enabled: 0
+    path: 
+    guid: 00000000000000000000000000000000
+  - enabled: 1
     path: Assets/Scenes/MarchingCubes 1.unity
-    guid: d026b3c123c07d840a400af953f45c7c
+    guid: c2063845a7de0ab4685ecc45ff7d7fe5
+  - enabled: 0
+    path: Assets/Scenes/DecorationScene.unity
+    guid: ce4df1e4812183945b254d0e9219875a
   m_configObjects: {}

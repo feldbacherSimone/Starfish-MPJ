@@ -22,7 +22,7 @@ public class GameProgress : MonoBehaviour
 
         tasks = new List<Task>()
         {
-            new Task("Batterie", 0, "Find Energysource to recharge batterie"),
+            new Task("Light", 0, "Find Find Recourcess to craft a light"),
             new Task("Patch Holes", 1, "Patch holes on outside of ship with a glue", true)
 
         };
