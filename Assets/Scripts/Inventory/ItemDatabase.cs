@@ -5,14 +5,37 @@ using UnityEngine;
 public class ItemDatabase : MonoBehaviour
 {
     public List<Item> items = new List<Item>();
-    public static ItemDatabase instance;
+    //public static ItemDatabase instance;
+    static bool instanceExists = false;
+
+
+
+    private static ItemDatabase _instance;
+
+    public static ItemDatabase instance { get { return _instance; } }
+
 
     private void Awake()
     {
-        instance = this; 
+        if (_instance != null && _instance != this)
+        {
+            Destroy(this.gameObject);
+        }
+        else
+        {
+            _instance = this;
+        }
+        if (instanceExists)
+        {
+            Destroy(gameObject);
+        }
+        instanceExists = true;
         BuildItemList();
         GameObject.DontDestroyOnLoad(gameObject);
     }
+
+
+
     private void Update()
     {
         if (Input.GetKeyDown(KeyCode.I))
