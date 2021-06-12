@@ -8,6 +8,8 @@ using UnityEngine;
 //thigs like plant distribution and chunk generation need to be handled by different classes 
 public class WorldGenerator : MonoBehaviour
 {
+    public bool hideTiles = true; 
+
     public Material matRef;
     public GameObject plane;
     public int chunkSize = 16;
@@ -20,7 +22,11 @@ public class WorldGenerator : MonoBehaviour
     {
         
         Generate();
-        HideTiles.instance.Init();
+        if (hideTiles)
+        {
+            HideTiles.instance.Init();
+        }
+      
     }
 
     private void Update()
