@@ -159,7 +159,7 @@ namespace Valve.VR.InteractionSystem
 
 
         //-------------------------------------------------
-        protected virtual void OnDetachedFromHand(Hand hand)
+        public virtual void OnDetachedFromHand(Hand hand)
         {
             attached = false;
 
