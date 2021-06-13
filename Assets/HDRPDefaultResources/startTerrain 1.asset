@@ -24,7 +24,7 @@ MonoBehaviour:
     max: 100
   colorFilter:
     m_OverrideState: 1
-    m_Value: {r: 0, g: 1.0351453, b: 1.3584906, a: 1}
+    m_Value: {r: 0.5898211, g: 1.2376057, b: 1.4372652, a: 1}
     hdr: 1
     showAlpha: 0
     showEyeDropper: 1
