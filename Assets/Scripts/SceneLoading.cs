@@ -11,7 +11,7 @@ public class SceneLoading : MonoBehaviour
     [SerializeField]
     AudioClip teleportSound;
     [SerializeField]
-    private int sceneIdex;
+    private int[] sceneIdex;
 
     private void Start()
     {
@@ -26,7 +26,15 @@ public class SceneLoading : MonoBehaviour
         {
             audioSource.clip = teleportSound;
             audioSource.Play();
-            SceneManager.LoadScene(sceneIdex);
+            if (sceneIdex.Length != 0)
+            SceneManager.LoadScene(sceneIdex[0], LoadSceneMode.Single);
+           if (sceneIdex.Length > 1)
+            {
+                for (int i = 1; i < sceneIdex.Length ; i++)
+                {
+                    SceneManager.LoadScene(sceneIdex[i], LoadSceneMode.Additive);
+                }
+            }
             Debug.Log("Scene " + sceneIdex + " has been loaded");
         }
         else
