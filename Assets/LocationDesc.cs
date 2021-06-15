@@ -27,6 +27,10 @@ public class LocationDesc : MonoBehaviour
         else
         {
             gameObject.GetComponent<TextMeshProUGUI>().text = text;
+            foreach (GameObject arrow in arrows)
+            {
+                arrow.SetActive(false); 
+            }
         }
             print("distance = " + Vector3.Distance(player.transform.position, gameObject.transform.position));
 

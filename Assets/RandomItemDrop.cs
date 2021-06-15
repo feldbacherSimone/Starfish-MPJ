@@ -8,7 +8,12 @@ public class RandomItemDrop : Collectable
     public float maxTime = 100;
     public int dropAmmount = 3; 
 
-    public override void destroy(bool destroyItem)
+    public override void destroy(bool destroyItem) //I just learned what overrides are -_- why do I have to keep finding this stuff through dodgy reddit threads 
+        //on another note my lung kinda hurts when I breath 
+        //is that normal
+        //it better be 
+        //I dont wanna die with this being the last thing I'm doing ;-; 
+
     {      
         base.destroy(false);
     }
