@@ -10,7 +10,7 @@ public class Collectable : MonoBehaviour
     public int itemCount = 3;
 
     [SerializeField] public static float itemForce = 0.1f;
-    public void destroy()
+    public virtual void destroy(bool destroyItem)
         
     {
         //instantiate shards and add force to them so they fly away 
@@ -22,7 +22,7 @@ public class Collectable : MonoBehaviour
             shard.transform.position = gameObject.transform.position; 
             shard.GetComponent<Recource>().ItemInit(itemName, itemForce);
         }
-
+        if (destroyItem)
         GameObject.Destroy(gameObject);
     }
 }

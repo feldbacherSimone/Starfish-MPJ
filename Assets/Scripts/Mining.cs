@@ -24,7 +24,7 @@ public class Mining : MonoBehaviour
             if (instance.objectHealth <= 0)
             {
                 playSound((breakSounds[Random.Range(0, breakSounds.Length - 1)]));
-                instance.destroy();
+                instance.destroy(true);
             }
               
         }
