@@ -16,7 +16,7 @@ public class TaskDisplay : MonoBehaviour
         DisplayTasks();
     }
 
-    void DisplayTasks()
+    public void DisplayTasks()
     {
         GameProgress.instance.progressPercent = 0;
 
@@ -48,5 +48,14 @@ public class TaskDisplay : MonoBehaviour
 
         }
     }
-
+    public void Clear()
+    {
+        foreach (Transform child in transform)
+        {
+            if (child.GetSiblingIndex() > 0)
+            {
+                Destroy(child.gameObject);
+            }
+        }
+    }
 }

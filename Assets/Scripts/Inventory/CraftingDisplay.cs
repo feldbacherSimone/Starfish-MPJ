@@ -8,6 +8,8 @@ public class CraftingDisplay : MonoBehaviour
     public List<GameObject> Lines = new List<GameObject>();
     [SerializeField]
     public Ingredient[] ingredients;
+    public Crafting crafting;
+    public int taskID;
 
     public GameObject listTemplate;
     public Transform positionRefernce;
@@ -17,7 +19,9 @@ public class CraftingDisplay : MonoBehaviour
     float offsetammount;
 
     public bool isFullfilled;
-    public bool isTerraian = false; 
+    public bool isTerraian = false;
+
+    int ingredientsgathered = 0;
 
     private void Update()
     {
@@ -26,7 +30,7 @@ public class CraftingDisplay : MonoBehaviour
 
   public void CreateRecipy()
     {
-        int ingredientsgathered = 0; 
+        
         float offset = 0; 
 
         if(Lines.Count > 0)
@@ -69,6 +73,21 @@ public class CraftingDisplay : MonoBehaviour
             isFullfilled = true;
      
     }
-
+  public void TryCrafting()
+    {
+        if (isFullfilled == true)
+        {
+            print("crafting Sucsessfull");
+            crafting.Craft();
+            foreach (Ingredient ingredient in ingredients)
+            {
+                Item item = ItemDatabase.instance.GetItem(ingredient.name);
+                item.amountCollectd -= ingredient.ammount;
+            }
+            GameProgress.instance.tasks[taskID].status = true; 
+        }
+        else
+            print("Crafting Failed"); 
+    }
 
 }

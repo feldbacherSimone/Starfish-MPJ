@@ -28,7 +28,7 @@ public class HideTiles : MonoBehaviour
         Debug.Log(gameObject.name);
         instance = this;
         scene = SceneManager.GetActiveScene();
-        if (scene.buildIndex == 2)
+        if (scene.buildIndex == 3)
             rightScene = true;
         else
             rightScene = false;
@@ -67,7 +67,10 @@ public class HideTiles : MonoBehaviour
          
     }
 
-   
+    private void Update()
+    {
+        DeactivateDistantTiles();
+    }
 
-    
+
 }

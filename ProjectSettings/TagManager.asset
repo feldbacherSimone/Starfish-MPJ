@@ -11,6 +11,7 @@ TagManager:
   - projectile
   - Item
   - Reference
+  - Screen
   layers:
   - Default
   - TransparentFX
