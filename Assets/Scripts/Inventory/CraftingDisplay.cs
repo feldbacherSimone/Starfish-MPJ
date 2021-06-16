@@ -17,6 +17,7 @@ public class CraftingDisplay : MonoBehaviour
     float offsetammount;
 
     public bool isFullfilled;
+    public bool isTerraian = false; 
 
     private void Update()
     {
@@ -41,6 +42,12 @@ public class CraftingDisplay : MonoBehaviour
 
             GameObject newLine = GameObject.Instantiate(listTemplate, gameObject.transform);
             Lines.Add(newLine);
+
+            if (isTerraian)
+            {
+                positionRefernce = GameObject.FindGameObjectWithTag("Reference").transform;
+            }
+
 
             if (useLocalSpace)
             newLine.transform.localPosition = positionRefernce.position + new Vector3( 0, offset, 0);
