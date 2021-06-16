@@ -39,7 +39,7 @@ public class Chunk
 
         //Deviding the offset by the noise scale fixes the seams for the most part (the edges are still a bit messy) 
         //I could tell you why if I were smart enough, sadly I am not :/
-        GameData.instance.CreateTerrainNoise(new Vector2(chunkPosition.x * GameData.instance.offsetScale / GameData.instance.noiseScale , chunkPosition.z / GameData.instance.noiseScale));
+        GameData.instance.CreateTerrainNoise(new Vector2(chunkPosition.x * GameData.instance.offsetScale / GameData.instance.noiseScale , chunkPosition.z * GameData.instance.offsetScale / GameData.instance.noiseScale));
 
         Debug.Log(chunkPosition.x * GameData.instance.offsetScale);
         //float[,,] noise3d = Noise3d(_height);
