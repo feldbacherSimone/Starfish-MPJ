@@ -38,7 +38,7 @@ public class TaskDisplay : MonoBehaviour
             if (task.status == true) {
                 status.text = "O";
                 status.color = colorDone;
-                GameProgress.instance.progressPercent += 30;
+                
             }
             else
             {
